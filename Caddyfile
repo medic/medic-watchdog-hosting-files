@@ -1,0 +1,13 @@
+allies-monitoring-alerting.dev.medicmobile.org {
+    redir https://watchdog.app.medicmobile.org{uri}
+}
+watchdog.app.medicmobile.org {
+    reverse_proxy grafana:3000
+}
+hextra-docs.dev.medicmobile.org {
+	redir https://docs.communityhealthtoolkit.org
+}
+old-docs.dev.medicmobile.org {
+    root * /home/cht-docs-old 
+    file_server
+}

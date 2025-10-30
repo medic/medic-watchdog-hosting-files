@@ -1,0 +1,19 @@
+#!/bin/bash
+cd ~/cht-monitoring
+docker compose \
+	-f docker-compose.yml \
+       	-f exporters/postgres/compose.yml \
+	-f ../caddy-compose.yml \
+	-f data-ingest/extra-sql-compose.yml \
+	-f node-exporter/compose.yml \
+	-f exporters/cht-user-management/compose.yml \
+	down 
+
+docker compose \
+	-f docker-compose.yml \
+       	-f exporters/postgres/compose.yml \
+	-f ../caddy-compose.yml \
+	-f data-ingest/extra-sql-compose.yml \
+	-f node-exporter/compose.yml \
+	-f exporters/cht-user-management/compose.yml \
+	up --remove-orphans -d

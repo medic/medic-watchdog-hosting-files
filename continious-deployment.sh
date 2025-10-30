@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Checks for local version (current) and then remote version on GH (latest)
+# and if they're not the same, run update script
+#
+# uses lastversion:  https://github.com/dvershinin/lastversion
+
+set -e
+
+current=$(cd ~/cht-monitoring;/usr/bin/git describe --tags)
+latest=$(~/lastversion/venv/bin/lastversion https://github.com/medic/cht-watchdog)
+
+update(){
+	cd ~/cht-monitoring
+	git fetch
+	git -c advice.detachedHead=false checkout "$latest"
+	~/down-up.sh
+}
+
+announce(){
+	/usr/bin/curl -sX POST --data-urlencode "payload={\"channel\": \"#stewardship-alerts\", \"username\": \"upgrade-bot\", \"text\": \"Watchdog has been updated from $current to $latest. Check it out at https://watchdog.app.medicmobile.org\", \"icon_emoji\": \":dog:\"}" https://hooks.slack.com/services/"$1"
+}
+
+
+if [ -n "$current" ] && [ -n "$latest" ] && [ ! "$current" = "$latest" ];then
+	echo "New version found!, will try and upgrade from $current to $latest"
+	update
+	announce "$1"
+	echo "Successfully upgrade from $current to $latest and sent Slack announcement"
+else
+	echo "No new version found, staying on $current."
+fi
