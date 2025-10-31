@@ -18,7 +18,7 @@ Feel free to test in production (!!) and then backport them to this repo.  But t
 1. Create an EC2 instance with a static IP
 2. Follow normal setup steps to deploy watchdog.  Note that install was done as `root` instead of `ubuntu` user.  As well, instead of `cht-watchdog` being the directory name, it's `cht-monitoring` .
 3. Clone this repo in `/root/medic-watchdog-hosting-files`
-4. In 1password, find the `SLACK-WATCHDOG-SECRET` string. This is the bearer token appended to the URL so the `curl` call works without authentication
+4. In 1password, find the `SLACK-WATCHDOG-SECRET` string. This is the bearer token appended to the URL so the `curl` call works without authentication. In 1password, it's the end part of the URL after `https://hooks.slack.com/services/`.
 5. As root, create a cronjob replace `SLACK-WATCHDOG-SECRET` with the value from prior step:
    ```shell
    */5  * * * * /root/medic-watchdog-hosting-files/continious-deployment.sh SLACK-WATCHDOG-SECRET
