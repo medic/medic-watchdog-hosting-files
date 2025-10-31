@@ -1,50 +1,35 @@
-# CHT Product Template Repository
+# Medic Watchdog Hosting Files
 
-This is a template repository for CHT Products. You can generate a new repository with the same directory structure and files as in this repository.
+To set up a self hosted instance of Watchdog, please see [set up docs](https://docs.communityhealthtoolkit.org/hosting/monitoring/setup/).
 
-## Create a repository from this template
+Medic teammates administrating `watchdog.app.medicmobile.org`, this is for you!
+ This repo has helper files and scripts that power Medic's internal instance of [Watchdog](https://github.com/medic/cht-watchdog/). 
 
-When [creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) under the Medic organization, select `cht-repo-template` as a template to use for the new repository.
+## Restarting Watchdog
 
-You can also create a repository directly from the template by following the steps [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+If you need to restart, be sure to use `/root/down-up.sh` as this ensures all compose files are referenced
 
-_Note_: You can read more about CHT Product repositories [in the CHT documentation](https://docs.communityhealthtoolkit.org/contribute/code/repository-checklist). 
+## Changing docker compose files
 
-## Existing default configurations
+Feel free to test in production (!!) and then backport them to this repo.  But this repo must always stay up to date.  Changes not committed to this repo may be lost as this repo is canonical.
 
-- The `main` branch is locked via [branch protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule).
-- Merges are done through PRs.
-- Automatically delete head branches.
-- Issue templates exist.
-- PR template exists.
-- PRs reference related issues.
-- Commit formats follow the [guidelines](https://docs.communityhealthtoolkit.org/contribute/code/workflow/#commits). More info about linting Git commit messages with Husky [here](https://remarkablemark.org/blog/2019/05/29/git-husky-commitlint/).
-- The following files exist:
-    - `LICENSE` specifying AGPL-3.0 ([example](https://github.com/medic/cht-core/blob/master/LICENSE))
-    - `README.md`
-- The PR template contains a code review checklist.
-- A reviewer for a PR merge is enforced by policy.
-- A linter is set up. [Here](https://github.com/medic/eslint-config)'s more info on how to use the `eslint` configurations.
+## Initial Setup
 
-The PR and issue template content can be adjusted according to the product's purpose.
-
-Additionally, the person who creates the repository might need to share repository access with appropriate teams (this may require admin access).
-
-## Items to consider when developing the CHT Product
-
-To ensure quality, the CHT Products should also follow the guidelines below:
-
-### CI/CD
-
-- Repository runs GitHub Actions CI with automated build and test on each PR.
-
-### Testing
-
-- Unit tests and successful builds for PR merges are set up.
-- Unit tests cover the majority of the code.
-- If applicable, integration tests run to test the solution e2e.
-
-### Observability
-
-- Application faults and errors are logged.
-- Logging configuration can be modified without code changes (eg: verbose mode).
+1. Create an EC2 instance with a static IP
+2. Follow normal setup steps to deploy watchdog.  Note that install was done as `root` instead of `ubuntu` user.  As well, instead of `cht-watchdog` being the directory name, it's `cht-monitoring` .
+3. Clone this repo in `/root/medic-watchdog-hosting-files`
+4. In 1password, find the `SLACK-WATCHDOG-SECRET` string. This is the bearer token appended to the URL so the `curl` call works without authentication. In 1password, it's the end part of the URL after `https://hooks.slack.com/services/`.
+5. As root, create a cronjob replace `SLACK-WATCHDOG-SECRET` with the value from prior step:
+   ```shell
+   */5  * * * * /root/medic-watchdog-hosting-files/continious-deployment.sh SLACK-WATCHDOG-SECRET
+   ```
+6. Symlink all the config files into place:
+   ```shell
+   ln -s ~medic-watchdog-hosting-files/cht-instances.yml ~/cht-monitoring/cht-instances.yml
+   ln -s ~medic-watchdog-hosting-files/node-exporter/ ~/cht-monitoring/node-exporter
+   ln -s ~medic-watchdog-hosting-files/Caddyfile ~/Caddyfile
+   ln -s ~medic-watchdog-hosting-files/caddy-compose.yml ~/caddy-compose.yml
+   ln -s ~medic-watchdog-hosting-files/continious-deployment.sh ~/continious-deployment.sh
+   ln -s ~medic-watchdog-hosting-files/down-up.sh ~/down-up.sh
+   ```
+7. Install [LastVersion](https://github.com/dvershinin/lastversion) in `/root/lastversion/` with a virtual environment. The net result should be that this works: `/root/lastversion/venv/bin/lastversion https://github.com/medic/cht-watchdog`. This will enable the cronjob above to work
