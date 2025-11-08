@@ -25,11 +25,11 @@ Feel free to test in production (!!) and then backport them to this repo.  But t
    ```
 6. Symlink all the config files into place:
    ```shell
-   ln -s ~medic-watchdog-hosting-files/cht-instances.yml ~/cht-monitoring/cht-instances.yml
-   ln -s ~medic-watchdog-hosting-files/node-exporter/ ~/cht-monitoring/node-exporter
-   ln -s ~medic-watchdog-hosting-files/Caddyfile ~/Caddyfile
-   ln -s ~medic-watchdog-hosting-files/caddy-compose.yml ~/caddy-compose.yml
-   ln -s ~medic-watchdog-hosting-files/continious-deployment.sh ~/continious-deployment.sh
-   ln -s ~medic-watchdog-hosting-files/down-up.sh ~/down-up.sh
+   ln -s ~/medic-watchdog-hosting-files/cht-instances.yml ~/cht-monitoring/cht-instances.yml
+   ln -s ~/medic-watchdog-hosting-files/node-exporter/ ~/cht-monitoring/node-exporter
+   ln -s ~/medic-watchdog-hosting-files/Caddyfile ~/Caddyfile
+   ln -s ~/medic-watchdog-hosting-files/caddy-compose.yml ~/caddy-compose.yml
+   ln -s ~/medic-watchdog-hosting-files/continious-deployment.sh ~/continious-deployment.sh
+   ln -s ~/medic-watchdog-hosting-files/down-up.sh ~/down-up.sh
    ```
 7. Install [LastVersion](https://github.com/dvershinin/lastversion) in `/root/lastversion/` with a virtual environment. The net result should be that this works: `/root/lastversion/venv/bin/lastversion https://github.com/medic/cht-watchdog`. This will enable the cronjob above to work
