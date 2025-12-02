@@ -7,12 +7,14 @@
 
 scrape_configs:
   - job_name: "node_exporter"
+    scrape_interval: 10m
     static_configs:
       - targets: ["watchdog-node-exporter:9100"]
       - targets: ["localip-node-exporter:9200"]
       - targets: ["3.96.214.70:9100"]
       - targets: ["35.182.149.20:9100"]
   - job_name: "node_exporter_echis_ke"
+    scrape_interval: 10m
     scheme: "https"
     static_configs:
       - targets: ["access.echis.go.ke:9100"]
