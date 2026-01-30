@@ -17,3 +17,8 @@ hextra-docs.dev.medicmobile.org {
 old-docs.dev.medicmobile.org {
 	redir https://docs.communityhealthtoolkit.org
 }
+demo-bot-monitoring.app.medicmobile.org {
+	# see https://github.com/medic/demo-account-slack-bot/pull/11
+	# tl;dr - this is a health-check for the CHT Demo account  bot
+	reverse_proxy 172.17.0.1:4000
+}
