@@ -11,17 +11,15 @@
   # (Note that the connected_user_interval parameter affects the time interval that determines the
   # cht_connected_users_count metric value. To preserve data consistency this value should NOT be adjusted after it is
   # initially set. When using the provided CHT Admin Overview dashboard, connected_user_interval=30 is required.)
+
+# Prod instances
   - https://achham-ne.app.medicmobile.org
-  - https://achham-ne.dev.medicmobile.org
-  - https://alpha.dev.medicmobile.org
   - https://bajhang-ne.app.medicmobile.org
   - https://bardiya-ne.app.medicmobile.org
   - https://bhojpur-ne.app.medicmobile.org
   - https://care-sindhuli.app.medicmobile.org
   - https://chis.dohs.gov.np
-  - https://chis-ne.dev.medicmobile.org
   - https://cht.mali.prod.musohealth.app
-  - https://demo-cht.dev.medicmobile.org
   - https://dhankuta-ne.app.medicmobile.org
   - https://dho-baitadi.app.medicmobile.org
   - https://dho-bajura-ne.app.medicmobile.org
@@ -29,42 +27,24 @@
   - https://dho-rasuwa-ne.app.medicmobile.org
   - https://dho-sindhupalchowk-ne.app.medicmobile.org
   - https://dho-sunsari-ne.app.medicmobile.org
-  - https://digital-payments-zanzibar.dev.medicmobile.org 
   - https://disc-mali.ml
   - https://dpho-kanchanpur.app.medicmobile.org
   - https://dpho-pyuthan-ne.app.medicmobile.org
-  - https://echis.health.go.ug
-  - https://gandaki.dev.medicmobile.org
-  - https://gandaki-interop.dev.medicmobile.org
   - https://gandaki.app.medicmobile.org
-  - https://gamma.dev.medicmobile.org
   - https://humla-ne.app.medicmobile.org
-  - https://itechcares-malawi.dev.medicmobile.org
-  - https://itechcares2-malawi.dev.medicmobile.org
   - https://itech-aurum.app.medicmobile.org
   - https://itech-malawi.app.medicmobile.org
-  - https://itech-malawi.dev.medicmobile.org
   - https://jajarkot-ne.app.medicmobile.org
   - https://kailali-ne.app.medicmobile.org
   - https://kalikot-ne.app.medicmobile.org
   - https://kfn-ilam.app.medicmobile.org
-  - https://lumbini.app.medicmobile.org
   - https://lumbini-ne.app.medicmobile.org
-  - https://lumbini-ne.dev.medicmobile.org
+  - https://lumbini.app.medicmobile.org
   - https://moh-civ.app.medicmobile.org
-  - https://moh-civ.dev.medicmobile.org
-  - https://moh-civ-uat.dev.medicmobile.org
-  - https://moh-mali-chw2.dev.medicmobile.org
-  - https://moh-mali-chw3.dev.medicmobile.org
   - https://moh-togo.app.medicmobile.org
-  - https://moh-togo.dev.medicmobile.org 
-  - https://moh-togo-uat.dev.medicmobile.org 
-  - https://moh-ug-test.dev.medicmobile.org 
   - https://moh-zanzibar.app.medicmobile.org
-  - https://moh-zanzibar.dev.medicmobile.org
   - https://morang-ne.app.medicmobile.org
   - https://muso-mali.app.medicmobile.org
-  - https://muso-mali-4x-trial.dev.medicmobile.org
   - https://ohw-dhading.app.medicmobile.org
   - https://panchthar-ne.app.medicmobile.org
   - https://safaridoctors-ke.app.medicmobile.org
@@ -75,6 +55,30 @@
   - https://syangja-ne.app.medicmobile.org
   - https://upgrade-muso-mali.app.medicmobile.org
   - https://zazic-scale-up.app.medicmobile.org
+
+# dev instance
+  - https://achham-ne.dev.medicmobile.org
+  - https://alpha.dev.medicmobile.org
+  - https://chis-ne.dev.medicmobile.org
+  - https://demo-cht.dev.medicmobile.org
+  - https://digital-payments-zanzibar.dev.medicmobile.org
+  - https://gamma.dev.medicmobile.org
+  - https://gandaki-interop.dev.medicmobile.org
+  - https://gandaki.dev.medicmobile.org
+  - https://itech-malawi.dev.medicmobile.org
+  - https://itechcares-malawi.dev.medicmobile.org
+  - https://itechcares2-malawi.dev.medicmobile.org
+  - https://jajarkot-ne.dev.medicmobile.org
+  - https://lumbini-ne.dev.medicmobile.org
+  - https://moh-civ-uat.dev.medicmobile.org
+  - https://moh-civ.dev.medicmobile.org
+  - https://moh-mali-chw2.dev.medicmobile.org
+  - https://moh-mali-chw3.dev.medicmobile.org
+  - https://moh-togo-uat.dev.medicmobile.org
+  - https://moh-togo.dev.medicmobile.org
+  - https://moh-ug-test.dev.medicmobile.org
+  - https://moh-zanzibar.dev.medicmobile.org
+  - https://muso-mali-4x-trial.dev.medicmobile.org
   - https://nouveau-test.dev.medicmobile.org
 
 # eCHIS Kenya instances - please keep sorted alpha
