@@ -11,6 +11,12 @@ scrape_configs:
     static_configs:
       - targets: ["watchdog-node-exporter:9100"]
       - targets: ["localip-node-exporter:9200"]
+  - job_name: "node_exporter_graviton_testing"
+    scrape_interval: 1m
+    static_configs:
+      - targets: ["graviton-m5.dev.medicmobile.org:9100"]
+      - targets: ["graviton-m6g.dev.medicmobile.org:9100"]
+      - targets: ["graviton-m7g.dev.medicmobile.org:9100"]
   - job_name: "node_exporter_echis_ke"
     scrape_interval: 1m
     scheme: "https"

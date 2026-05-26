@@ -82,6 +82,12 @@
   - https://muso-mali-4x-trial.dev.medicmobile.org
   - https://nouveau-test.dev.medicmobile.org
 
+  # dev graviton instances
+  # see https://github.com/medic/medic-infrastructure/issues/1399
+  - https://graviton-m5.dev.medicmobile.org
+  - https://graviton-m6g.dev.medicmobile.org
+  - https://graviton-m7g.dev.medicmobile.org
+
 # eCHIS Kenya instances - please keep sorted alpha
   - https://baringo.echis.go.ke
   - https://bomet.echis.go.ke
