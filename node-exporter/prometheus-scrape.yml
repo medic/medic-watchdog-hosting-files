@@ -11,6 +11,7 @@ scrape_configs:
     static_configs:
       - targets: ["watchdog-node-exporter:9100"]
       - targets: ["localip-node-exporter:9200"]
+      - targets: ["rdbms-prod-node-exporter:9300"]
   - job_name: "node_exporter_echis_ke"
     scrape_interval: 1m
     scheme: "https"
